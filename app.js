@@ -360,8 +360,10 @@ async function loginSend(){
   L.busy=false;render();
 }
 async function loginVerify(){
-  const L=S.login;L.busy=true;L.msg=null;render();
-  try{await SC_AUTH.verifyCode(L.email,document.getElementById("lCode").value);location.reload()}
+  const L=S.login;const code=(document.getElementById("lCode").value||"").replace(/\D/g,"");
+  if(!code){L.msg={t:"Saisissez le code reçu par e-mail.",err:true};render();return}
+  L.busy=true;L.msg=null;render();
+  try{await SC_AUTH.verifyCode(L.email,code);location.reload()}
   catch(e){L.msg={t:e.message,err:true};L.busy=false;render()}
 }
 function logoutBtn(){return user?`<button class="btn sm ghost" data-act="logout" title="${esc(myId||"")}">Se déconnecter</button>`:""}
