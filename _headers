@@ -1,0 +1,7 @@
+# En-têtes de sécurité (pris en compte par Netlify / Cloudflare Pages ; ignoré par GitHub Pages)
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(self)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Content-Security-Policy: frame-ancestors 'self' https://saladandco.fr https://www.saladandco.fr
